@@ -7,7 +7,6 @@ module JSON
           hash.each_pair do |key, value|
             key = key.to_sym
             @table[key] = _transform value
-            new_ostruct_member key
           end
         end
 
