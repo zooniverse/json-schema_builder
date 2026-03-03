@@ -130,8 +130,8 @@ RSpec.describe JSON::SchemaBuilder::Entity, type: :unit do
 
       it "should #{ validator }" do
         expect(JSON::Validator).to receive(validator)
-          .with subject.as_json, { }, working: true, opts: true
-        subject.send validator, { }, opts: true
+          .with subject.as_json, { }, {working: true, opts: true}
+        subject.send validator, { }, {opts: true}
       end
     end
   end
