@@ -181,7 +181,7 @@ RSpec.describe JSON::SchemaBuilder::Schema, type: :unit do
     describe "##{ validator }" do
       it "should #{ validator }" do
         expect(JSON::Validator).to receive(validator)
-          .with schema.as_json, { }, opts: true
+          .with schema.as_json, { }, { opts: true }
         schema.send validator, { }, opts: true
       end
     end
