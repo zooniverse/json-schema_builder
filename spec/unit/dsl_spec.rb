@@ -27,13 +27,13 @@ RSpec.describe JSON::SchemaBuilder::DSL, type: :unit do
       end
 
       it 'should dispatch to entity' do
-        expect(instance).to receive(:entity).with(:something, 1, foo: :bar).and_call_original
-        instance.something 1, foo: :bar
+        expect(instance).to receive(:entity).with(:something, 1, {foo: :bar}).and_call_original
+        instance.something 1, {foo: :bar}
       end
 
       it 'should allow unnamed entities' do
-        expect(instance).to receive(:entity).with(:something, nil, foo: :bar).and_call_original
-        instance.something foo: :bar
+        expect(instance).to receive(:entity).with(:something, nil, {foo: :bar}).and_call_original
+        instance.something({foo: :bar})
       end
     end
   end
@@ -60,7 +60,7 @@ RSpec.describe JSON::SchemaBuilder::DSL, type: :unit do
 
       it 'should set the parent' do
         expect(instance.class).to receive(:new)
-          .with('name', parent: kind_of(klass)).and_call_original
+           .with('name',{parent: kind_of(klass)}).and_call_original
 
         entity = instance.entity :something, 'name'
         expect(entity).to be_a klass
